@@ -1,5 +1,6 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.model.EmployeeDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Employee implements EmployeeApi {
 
     @Override
-    public ResponseEntity<com.example.springboot.model.Employee> getEmployees() {
+    public ResponseEntity<EmployeeDTO> getEmployees() {
         return EmployeeApi.super.getEmployees();
     }
 }
