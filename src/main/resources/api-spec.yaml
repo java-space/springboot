@@ -11,7 +11,7 @@ info:
     url: http://springdoc.org
   version: 0.0.1
 servers:
-  - url: http://192.168.0.157:2021/labsq/api
+  - url: http://localhost:8080/javaspace/api
     description: Generated server url
 tags:
   - name: Employee
@@ -19,14 +19,14 @@ tags:
 paths:
 
 
-  # EmployeeS
+  # Employee
   /v1/employees:
     get:
       tags:
         - Employee
-      summary: Retrieve Employee
-      description: Retrieve Employee
-      operationId: retrieve-Employee
+      summary: Get Employee
+      description: Get Employee
+      operationId: get-employees
       responses:
         '200':
           description: Retrieve Employee
@@ -48,59 +48,10 @@ paths:
             '*/*':
               schema:
                 type: string
-    post:
-      tags:
-        - Employee
-      summary: Add OAuth Employee
-      description: Add OAuth Employee
-      operationId: add-oauth-Employee
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Employee'
-        required: true
-      responses:
-        '200':
-          description: Add Employee
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Employee'
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Employee'
-    put:
-      tags:
-        - Employee
-      summary: Update Employee
-      description: Update an Employee
-      operationId: update-Employee
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Employee'
-        required: true
-      responses:
-        '200':
-          description: Update Employee
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Employee'
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Employee'
 
 # SCHEMAS
 components:
   schemas:
-    Gender:
-      type: string
-      enum:
-        - MALE
-        - FEMALE
     Employee:
       type: object
       properties:
