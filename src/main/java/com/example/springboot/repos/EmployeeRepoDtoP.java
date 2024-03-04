@@ -1,7 +1,7 @@
 package com.example.springboot.repos;
 
-import com.example.springboot.entity.Employee;
 import com.example.springboot.dtoprojection.NamesOnlyDTO;
+import com.example.springboot.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Employee implements EmployeeApi {
+public class EmployeeController implements EmployeeApi {
 
     @Override
     public ResponseEntity<EmployeeDTO> getEmployees() {

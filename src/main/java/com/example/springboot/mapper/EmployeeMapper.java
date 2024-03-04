@@ -9,8 +9,8 @@
 
 package com.example.springboot.mapper;
 
-import com.example.springboot.controller.Employee;
-import com.example.springboot.dto.EmployeeDTO;
+import com.example.springboot.entity.Employee;
+import com.example.springboot.model.EmployeeDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
@@ -22,9 +22,9 @@ public interface EmployeeMapper {
 
     EmployeeMapper INSTANCE = Mappers.getMapper(EmployeeMapper.class);
 
-    Employee internalToDto(EmployeeDTO employeeDTO);
+    EmployeeDTO internalToDto(Employee employee);
 
-    EmployeeDTO dtoToInternal(Employee account);
+    Employee dtoToInternal(EmployeeDTO employeeDTO);
 
     List<EmployeeDTO> internalsToDTOs(List<Employee> employees);
 }

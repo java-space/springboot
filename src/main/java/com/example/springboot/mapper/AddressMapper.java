@@ -12,8 +12,11 @@ package com.example.springboot.mapper;
 import com.example.springboot.entity.Address;
 import com.example.springboot.model.AddressDTO;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
+
+import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface AddressMapper {
@@ -22,5 +25,8 @@ public interface AddressMapper {
 
     AddressDTO internalToDto(Address address);
 
+    @Mapping(target = "employee", ignore = true )
     Address dtoToInternal(AddressDTO addressDTO);
+
+    List<AddressDTO> internalsToDTOs(List<Address> addresses);
 }

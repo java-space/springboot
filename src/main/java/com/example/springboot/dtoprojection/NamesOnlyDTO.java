@@ -1,8 +1,5 @@
 package com.example.springboot.dtoprojection;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.Value;
 
 @Value

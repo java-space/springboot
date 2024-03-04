@@ -3,7 +3,7 @@ package com.example.springboot.dto;
 import lombok.Data;
 
 @Data
-public class EmployeeDTO {
+public class InternalEmployeeDTO {
 
     private String fullName;
     private boolean working;
