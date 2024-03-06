@@ -20,6 +20,24 @@ paths:
 
 
   # Employee
+  /v1/employees/{id}:
+    delete:
+      tags:
+        - Employee
+      summary: Delete employee
+      description: Delete employee
+      operationId: delete-employee
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            default: 1
+      responses:
+        204:
+          description: The resource was deleted successfully.
   /v1/employees:
     get:
       tags:
@@ -33,7 +51,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Employee'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
             '*/*':
               schema:
                 $ref: '#/components/schemas/Employee'
@@ -41,6 +61,138 @@ paths:
           description: No Content
         '404':
           description: Employee not found
+          content:
+            application/json:
+              schema:
+                type: string
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+        - Employee
+      summary: Add employee
+      description: Add employee
+      operationId: add-employee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '201':
+          description: Resource has been successfully created
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: string
+            '*/*':
+              schema:
+                type: string
+  /v1/employees/search:
+    get:
+      tags:
+        - Employee
+      summary: Get Employee by name
+      description: Get by name
+      operationId: find-employees-by-name
+      parameters:
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get item by name
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '204':
+          description: No Content
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                type: string
+            '*/*':
+              schema:
+                type: string
+  /v1/employees/id:
+    get:
+      tags:
+        - Employee
+      summary: Get Employee by name
+      description: Get by name
+      operationId: find-employee-by-id
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Get item by name
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Employee'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '204':
+          description: No Content
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                type: string
+            '*/*':
+              schema:
+                type: string
+  /v1/employees/province:
+    get:
+      tags:
+        - Employee
+      summary: Get Employee by province
+      description: Get by province
+      operationId: find-employees-by-province
+      parameters:
+        - name: province
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get item by name
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '204':
+          description: No Content
+        '404':
+          description: Account not found
           content:
             application/json:
               schema:
