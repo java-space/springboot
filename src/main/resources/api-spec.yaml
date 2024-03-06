@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: LabSq API
+  title: JavaSpace
   description: This is an api-spec for `LabSqApi`.
   termsOfService: http://swagger.io/terms/
   contact:
@@ -11,7 +11,7 @@ info:
     url: http://springdoc.org
   version: 0.0.1
 servers:
-  - url: http://localhost:8080/javaspace/api
+  - url: http://localhost:8080/api
     description: Generated server url
 tags:
   - name: Employee

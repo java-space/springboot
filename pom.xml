@@ -155,7 +155,7 @@
 								<importMapping>java.time.OffsetDateTime=java.time.LocalDateTime</importMapping>
 							</importMappings>
 							<configOptions>
-								<delegatePattern>true</delegatePattern>
+								<delegatePattern>false</delegatePattern>
 								<interfaceOnly>false</interfaceOnly>
 								<dateLibrary>java8</dateLibrary>
 								<java8>true</java8>
