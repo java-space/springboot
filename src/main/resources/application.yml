@@ -7,7 +7,7 @@ spring:
     password: blessing
     url: jdbc:mysql://localhost:3306/JavaSpace?serverTimezone=UTC&createDatabaseIfNotExist=true
   jpa:
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         format_sql: true

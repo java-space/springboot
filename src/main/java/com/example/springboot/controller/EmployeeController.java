@@ -1,5 +1,6 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.service.RandomService;
 import com.example.springboot.mapper.EmployeeMapper;
 import com.example.springboot.model.EmployeeDTO;
 import com.example.springboot.repos.EmployeeRepo;
@@ -15,9 +16,11 @@ import java.util.List;
 public class EmployeeController implements EmployeeApiDelegate {
 
     private EmployeeRepo employeeRepo;
+    private RandomService randomService;
 
     @Override
     public ResponseEntity<List<EmployeeDTO>> getEmployees() {
+        randomService.print();
         return ResponseEntity.ok(
                 EmployeeMapper.INSTANCE.internalsToDTOs(
                         employeeRepo.findAll()

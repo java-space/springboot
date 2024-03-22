@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+<!--    %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint}-->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%t]){faint} %clr(%-40.40logger{39}){cyan} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+    <!--<property name="CONSOLE_LOG_PATTERN" value="%d %p [%c{1}] - %m%n"/>-->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <appender name="ROLLING_APPENDER"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <!--<file>C:/tmp/var/demo/demo-app.log</file>-->
+        <!--<file>/var/log/mds/demo-app.log</file>-->
+        <file>${LOG_FOLDER}/demo-app.log</file>
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>
+                ${LOG_FOLDER}/demo-app.log.%d{yyyy-MM-dd}.%i.log.zip
+            </fileNamePattern>
+            <!--<fileNamePattern>
+                C:/tmp/var/demo-app.log.%d{yyyy-MM-dd}.%i.log.zip
+            </fileNamePattern>-->
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>20</maxHistory>
+            <totalSizeCap>1000MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.hsbc.app.demo" additivity="false" level="debug">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ROLLING_APPENDER"/>
+    </logger>
+    <logger name="org.springframework" level="INFO"/>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ROLLING_APPENDER"/>
+    </root>
+</configuration>
